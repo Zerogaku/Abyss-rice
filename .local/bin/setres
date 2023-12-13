@@ -1,0 +1,2 @@
+#!/bin/bash
+/bin/bash -c "sleep 2&&xrandr --output eDP1 --mode 1920x1080"

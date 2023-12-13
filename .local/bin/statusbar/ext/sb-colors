@@ -1,0 +1,26 @@
+#!/bin/sh
+# style 1 (1 background and text color for whole module)
+# style 2 (2 background and text colors for module, icon and info)
+
+# VOLUME - style 2
+Volicon="^B6^^c#000000^"
+Volinfo="^b#B6AB90^^c#000000^"
+
+# BATTERY - style 2
+Baticon="^B9^^c#FFFFFF^" #combine them both
+Batinfo="^b#6F5727^^c#FFFFFF^"
+
+# DATE/TIME - style 1 (for both)
+Calmod="^B5^^c#000000^"
+
+Timemod="^B8^^c#000000^"
+
+# internet - style 1
+Intmod="^B1^^c#FFFFFF^"
+
+# music - style 2
+Musicon="^B2^^c#000000^"
+Musinfo="^b#656862^^c#FFFFFF^"
+
+# recording - style 1
+Recmod="^B13^^c#000000^"

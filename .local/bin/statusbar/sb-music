@@ -1,0 +1,59 @@
+#!/bin/sh
+
+#filter() { sed "/^volume:/d" | paste -sd ' ' - | sed "/\\[playing\\]/ s/^/  /; /\\[paused\\]/ s/^/  /; s/\\[playing\\].*//; s/\\[paused\\].*//" | cut -c 1-30 |  sed "s/[[:blank:]]*$//"; }
+
+#output=$(mpc status 2>/dev/null)
+#status=$(head -1 <<< "$output")
+#max_chars=30 # Character limit
+#status_msg="${status:0:$max_chars}" # Limit total characters
+#clean_status="${status_msg%%[[:blank:]]}" # Remove trailing whitespace
+#filter() {
+#	if grep -q playing <<< "$output" ; then
+#		echo "  $clean_status"  # Playing icon
+#	elif grep -q paused <<< "$output" ; then
+#		echo "  $clean_status"  # Paused icon
+#	else
+#		echo "" #do nothing
+#	fi
+#}
+
+. ~/.local/bin/statusbar/ext/sb-colors
+
+output=$(mpc status 2>/dev/null)
+status=$(head -1 <<< "$output")
+max_chars=33 # Character limit
+status_msg="${status:0:$max_chars}" # Limit total characters
+clean_status="${status_msg%%[[:blank:]]}" # Remove trailing whitespace
+# Function to truncate song name and add "..." if needed
+truncate_song_name() {
+  if [ ${#status} -gt $max_chars ]; then
+    echo "$clean_status..."
+  else
+    echo "$clean_status"
+  fi
+}
+filter() {
+	if grep -q playing <<< "$output" ; then
+		#echo "^b#295c44^^c#F7EBE8^  ^b#153124^^c#F7EBE8^ $(truncate_song_name)"  # Playing icon
+		echo "${Musicon}  ${Musinfo} $(truncate_song_name)"  # Playing icon
+	elif grep -q paused <<< "$output" ; then
+		echo "${Musicon}  ${Musinfo} $(truncate_song_name)"  # Paused icon
+	else
+		echo "" #do nothing
+	fi
+}
+pidof -x sb-mpdup >/dev/null 2>&1 || sb-mpdup >/dev/null 2>&1 &
+
+case $BLOCK_BUTTON in
+	1) mpc status | filter ; setsid -f "$TERMINAL" -e ncmpcpp ;;  # right click, pause/unpause
+	2) mpc toggle | filter ;;  # right click, pause/unpause
+	3) mpc status | filter ; notify-send " Music module" "\- Shows mpd song playing.
+-   when paused.
+- Left click opens ncmpcpp.
+- Middle click pauses.
+- Scroll changes track.";;  # right click, pause/unpause
+	4) mpc prev   | filter ;;  # scroll up, previous
+	5) mpc next   | filter ;;  # scroll down, next
+	6) mpc status | filter ; "$TERMINAL" -e "$EDITOR" "$0" ;;
+	*) mpc status | filter ;;
+esac

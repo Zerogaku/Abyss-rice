@@ -1,0 +1,3 @@
+#!/bin/sh
+
+emacs --daemon && notify-send '  Emacs initialized'

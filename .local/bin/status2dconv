@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -n "$1" ]; then
+  format="$1"
+else
+  echo "Usage: $0 <format>"
+  exit 1
+fi
+
+# Use a regular expression to extract the number after "^B"
+if [[ $format =~ \^B([0-9]+)\^ ]]; then
+  number="${BASH_REMATCH[1]}"
+else
+  echo "Invalid format. Format should be in the form of ^B<number>^."
+  exit 1
+fi
+
+# Search for the format in the Xresources file and extract the color value
+color=$(grep -E "^\*\.color${number}:" ~/.config/x11/xresources | sed -n 's/.*: //p')
+
+# Output the color
+echo "$color"

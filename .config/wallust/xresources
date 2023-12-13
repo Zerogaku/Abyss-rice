@@ -1,0 +1,54 @@
+/* name		dark	light */
+/* black	0	8 */
+/* red		1	9 */
+/* green	2	10 */
+/* yellow	3	11 */
+/* blue		4	12 */
+/* purple	5	13 */
+/* cyan		6	14 */
+/* white	7	15 */
+dmenu.font          : monospace:size=15
+dmenu.background    : {background}
+dmenu.foreground    : {foreground}
+dmenu.selbackground : {color14}
+dmenu.selforeground : {color0}
+dmenu.bordercolor   : {color14}
+
+dwm.normbgcolor: {color0}
+dwm.selbgcolor: {color0}
+dwm.tagsnormfgcolor: {color6}
+
+dwm.titlenormbgcolor: {color0}
+dwm.titleselbgcolor: {color0}
+
+dwm.selfgcolor: {color4}
+dwm.normfgcolor: {color12}
+dwm.titleselfgcolor: {color14}
+dwm.tagsselfgcolor: {color14}
+dwm.tagsselbgcolor: {color0}
+dwm.tagsnormbgcolor: {color0}
+
+dwm.selbordercolor: {color14}
+dwm.normbordercolor: {background}
+dwm.normfloatcolor: {background}
+dwm.selfloatcolor: {color14}
+
+*.color0: {color0}
+*.color1: {color1}
+*.color2: {color2}
+*.color3: {color3}
+*.color4: {color4}
+*.color5: {color5}
+*.color6: {color6}
+*.color7: {color7}
+*.color8: {color8}
+*.color9: {color9}
+*.color10: {color10}
+*.color11: {color11}
+*.color12: {color12}
+*.color13: {color13}
+*.color14: {color14}
+*.color15: {color15}
+*.background: {background}
+*.foreground: {foreground}
+*.cursorColor: {cursor}

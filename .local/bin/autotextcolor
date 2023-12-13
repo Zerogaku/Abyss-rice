@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Modules
+# note:
+# Dbg is just used for convennience here, just focus on bg and bg2.
+# style 1 will use only letters, whilst style 2 will use numbered letters
+
+## VOLUME
+Volbg="^B6^"
+Volchar="^c$(color-readability "$(status2dconv $Volbg)")^"
+Volicon="${Volbg}${Volchar}"
+
+VolDbg="$(darkencolor "$(status2dconv $Volbg)")"
+
+Volbg2="^b$VolDbg^"
+Voltxt="^c$(color-readability "$VolDbg")^"
+Volinfo="${Volbg2}${Voltxt}"
+
+## INTERNET
+Intbg="^B1^"
+Inttxt="^c$(color-readability "$(status2dconv $Intbg)")^"
+Intmod="${Intbg}${Inttxt}"
+
+## DATE/TIME
+Calbg="^B5^"
+Caltxt="^c$(color-readability "$(status2dconv $Calbg)")^"
+Calmod="${Calbg}${Caltxt}"
+
+Timebg="^B8^"
+Timetxt="^c$(color-readability "$(status2dconv $Timebg)")^"
+Timemod="${Timebg}${Timetxt}"
+
+## BATTERY
+Batbg="^B9^"
+Batchar="^c$(color-readability "$(status2dconv $Batbg)")^"
+Baticon="${Batbg}${Batchar}" #combine them both
+
+BatDbg="$(darkencolor "$(status2dconv $Batbg)")"
+
+Batbg2="^b$BatDbg^"
+Battxt="^c$(color-readability "$BatDbg")^"
+Batinfo="${Batbg2}${Battxt}"
+
+## MUSIC
+Musbg="^B2^"
+Muschar="^c$(color-readability "$(status2dconv $Musbg)")^"
+Musicon="${Musbg}${Muschar}"
+
+MusDbg="$(darkencolor "$(status2dconv $Musbg)")"
+
+Musbg2="^b$MusDbg^"
+Mustxt="^c$(color-readability "$MusDbg")^"
+Musinfo="${Musbg2}${Mustxt}"
+
+## RECORDING
+Recbg="^B13^"
+Rectxt="^c$(color-readability "$(status2dconv $Recbg)")^"
+Recmod="${Recbg}${Rectxt}"
+
+# Read the template file
+template_file="/home/zero/.local/bin/statusbar/ext/template"
+template=$(<"$template_file")
+
+# find and replace with variable output
+output="${template//\{V1\}/$Volicon}"
+output="${output//\{V2\}/$Volinfo}"
+
+output="${output//\{I\}/$Intmod}"
+output="${output//\{C\}/$Calmod}"
+output="${output//\{T\}/$Timemod}"
+output="${output//\{R\}/$Recmod}"
+
+output="${output//\{B1\}/$Baticon}"
+output="${output//\{B2\}/$Batinfo}"
+
+output="${output//\{M1\}/$Musicon}"
+output="${output//\{M2\}/$Musinfo}"
+
+# Write the output to a file
+output_file="/home/zero/.local/bin/statusbar/ext/sb-colors"
+echo "$output" > "$output_file"

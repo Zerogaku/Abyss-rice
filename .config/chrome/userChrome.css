@@ -1,0 +1,52 @@
+* {
+  border-radius: 0 !important;
+}
+
+/* I use tree style tabs to see tabs and switch tabs using tridactyl */
+/* #TabsToolbar {display:none !important} */
+
+/* disable some unesecarry UI */
+#forward-button {display:none !important}
+#back-button {display:none !important}
+#scrollbutton-down {display: none !important}
+#scrollbutton-up {display: none !important}
+#alltabs-button {display: none !important}
+#tabs-newtab-button {display: none !important}
+#new-tab-button {display: none !important}
+.tab-close-button {display: none !important}
+.titlebar-buttonbox-container {display: none !important}
+.titlebar-spacer {display: none !important}
+
+/* COLLAPSE NAVBAR */
+#nav-bar {
+  --navbar-margin: -40px;
+  margin-top: var(--navbar-margin);
+  z-index: -100;
+  opacity: 0;
+  transition: opacity 0.2s ease-in !important;
+}
+
+/* TRANSITION FOR BOTH */
+/* #navigator-toolbox:focus-within > #nav-bar, */
+/* #navigator-toolbox:hover > #nav-bar { */
+/*   margin-top: 0; */
+/*   margin-bottom: var(--navbar-margin); */
+/*   z-index: 100; */
+/*   opacity: 1; */
+/* } */
+
+
+#navigator-toolbox:focus-within > #nav-bar {
+  margin-top: 0;
+  margin-bottom: var(--navbar-margin);
+  z-index: 100;
+  opacity: 1;
+  transition:none !important;
+}
+
+#navigator-toolbox:hover > #nav-bar {
+  margin-top: 0;
+  margin-bottom: var(--navbar-margin);
+  z-index: 100;
+  opacity: 1;
+}
