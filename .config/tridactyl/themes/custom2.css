@@ -136,4 +136,46 @@
     right: 10px !important;
     font-weight: 200 !important;
     padding: 5px !important;
+    --tridactyl-status-bg: #C9FF27;
+    background: var(--tridactyl-status-bg) !important;
+    color: #000 !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+}
+
+/* Insert mode */
+:root .TridactylStatusIndicator[class$="TridactylModeinsert"] {
+	--tridactyl-status-bg: #87CEEB;
+	background: var(--tridactyl-status-bg) !important;
+}
+
+/* Visual mode */
+:root .TridactylStatusIndicator[class$="TridactylModevisual"]{
+	--tridactyl-status-bg: #e63946;
+	background: var(--tridactyl-status-bg) !important;
+}
+
+/* Input mode */
+:root .TridactylStatusIndicator[class$="TridactylModeinput"] {
+	--tridactyl-status-bg: #219ebc;
+	background: var(--tridactyl-status-bg) !important;
+}
+
+/* Ignore mode */
+:root .TridactylStatusIndicator[class$="TridactylModeignore"] {
+	--tridactyl-status-bg: #9966CC;
+	background: var(--tridactyl-status-bg) !important;
+}
+
+/* Hint mode */
+:root .TridactylStatusIndicator[class$="TridactylModehint"] {
+	--tridactyl-status-bg: #38b000;
+	background: var(--tridactyl-status-bg) !important;
+}
+
+/* Normal */
+:root .TridactylStatusIndicator[class$="TridactylModenormal"] {
+	--tridactyl-status-bg: #C9FF27;
+	background: var(--tridactyl-status-bg) !important;
 }

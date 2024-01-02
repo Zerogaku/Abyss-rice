@@ -8,47 +8,47 @@
 /* cyan		6	14 */
 /* white	7	15 */
 dmenu.font          : monospace:size=15
-dmenu.background    : #070603
-dmenu.foreground    : #FAF5E8
-dmenu.selbackground : #F3E5C0
-dmenu.selforeground : #070603
-dmenu.bordercolor   : #F3E5C0
+dmenu.background    : #030302
+dmenu.foreground    : #F6F2E7
+dmenu.selbackground : #E7DBBD
+dmenu.selforeground : #030302
+dmenu.bordercolor   : #E7DBBD
 
-dwm.normbgcolor: #070603
-dwm.selbgcolor: #070603
-dwm.tagsnormfgcolor: #F3E5C0
+dwm.normbgcolor: #030302
+dwm.selbgcolor: #030302
+dwm.tagsnormfgcolor: #E7DBBD
 
-dwm.titlenormbgcolor: #070603
-dwm.titleselbgcolor: #070603
+dwm.titlenormbgcolor: #030302
+dwm.titleselbgcolor: #030302
 
-dwm.selfgcolor: #CAAD68
-dwm.normfgcolor: #CAAD68
-dwm.titleselfgcolor: #F3E5C0
-dwm.tagsselfgcolor: #F3E5C0
-dwm.tagsselbgcolor: #070603
-dwm.tagsnormbgcolor: #070603
+dwm.selfgcolor: #C1AD88
+dwm.normfgcolor: #C1AD88
+dwm.titleselfgcolor: #E7DBBD
+dwm.tagsselfgcolor: #E7DBBD
+dwm.tagsselbgcolor: #030302
+dwm.tagsnormbgcolor: #030302
 
-dwm.selbordercolor: #F3E5C0
-dwm.normbordercolor: #070603
-dwm.normfloatcolor: #070603
-dwm.selfloatcolor: #F3E5C0
+dwm.selbordercolor: #E7DBBD
+dwm.normbordercolor: #030302
+dwm.normfloatcolor: #030302
+dwm.selfloatcolor: #E7DBBD
 
-*.color0: #070603
-*.color1: #947535
-*.color2: #878B83
-*.color3: #A08F61
-*.color4: #CAAD68
-*.color5: #C8BC8E
-*.color6: #F3E5C0
-*.color7: #F0E9D7
-*.color8: #A8A396
-*.color9: #947535
-*.color10: #878B83
-*.color11: #A08F61
-*.color12: #CAAD68
-*.color13: #C8BC8E
-*.color14: #F3E5C0
-*.color15: #F0E9D7
-*.background: #070603
-*.foreground: #FAF5E8
-*.cursorColor: #FAF5E8
+*.color0: #030302
+*.color1: #9B8D7B
+*.color2: #B08D5C
+*.color3: #979AA0
+*.color4: #C1AD88
+*.color5: #C2BCB1
+*.color6: #E7DBBD
+*.color7: #EAE4D5
+*.color8: #A39F95
+*.color9: #9B8D7B
+*.color10: #B08D5C
+*.color11: #979AA0
+*.color12: #C1AD88
+*.color13: #C2BCB1
+*.color14: #E7DBBD
+*.color15: #EAE4D5
+*.background: #030302
+*.foreground: #F6F2E7
+*.cursorColor: #F6F2E7
