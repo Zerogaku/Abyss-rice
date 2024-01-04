@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# This loop will update the mpd statusbar module whenever a command changes the
+# music player's status. mpd must be running on X's start for this to work.
+
+#while : ; do
+#	mpc idle >/dev/null && kill -36 "$(pidof "${STATUSBAR:-dwmblocks}")" || break
+#done
+
+#while : ; do
+#    pids=$(pidof "${STATUSBAR:-dwmblocks}")
+#    if [ -n "$pids" ]; then
+#        for pid in $pids; do
+#            kill -36 "$pid" 2>/dev/null
+#        done
+#    else
+#        break
+#    fi
+#done
+
+#while mpc idle >/dev/null; do
+#    kill -36 $(pidof "${STATUSBAR:-dwmblocks}")
+#done
+
+while : ; do
+    if mpc idle >/dev/null; then
+        kill -36 $(pidof "${STATUSBAR:-dwmblocks}")
+    else
+        break
+    fi
+done

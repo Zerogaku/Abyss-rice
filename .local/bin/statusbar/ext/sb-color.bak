@@ -1,0 +1,87 @@
+#!/bin/sh
+
+# most modules just use:
+# [module]bg
+# [module]txt
+
+# but for extra details you can use:
+# [module]bg
+# [module]icon
+# and
+# [module]bg2
+# [module]txt
+
+# colors for statusbar using status2d
+
+## Default
+#light font
+#LF=#F7EBE8
+#
+##orange
+##Lor=#d25d19
+##Dor=#83360a
+#Lor=#d25d19
+#Dor="$(darkencolor "$Lor")"
+#
+##blue
+#Lbl=#005c7b
+#Dbl=#002b46
+#
+#
+##purple
+#Dpu=#330239
+#
+##gray
+#Dgr=#283238
+#
+##red
+#Dre=#9E1B32
+
+## Xresources/wallust
+
+# volume
+#choose xresources bg for first icon of vol
+Volbg="^B6^"
+# select text color for icon based on selected bg
+Volicon="^c$(color-readability "$(status2dconv $Volbg)")^"
+
+#darken bg color of vol percentage based on selected bg
+VolDbg="$(darkencolor "$(status2dconv $Volbg)")"
+Volbg2="^b$VolDbg^"
+#Voltxt="^c$(color-readability "$(status2dconv ^B6^)")^"
+
+# select text color for icon based on darkened bg
+Voltxt="^c$(color-readability "$VolDbg")^"
+
+# battery
+Batbg="^B9^"
+Baticon="^c$(color-readability "$(status2dconv $Batbg)")^"
+
+BatDbg="$(darkencolor "$(status2dconv $Batbg)")"
+Batbg2="^b$BatDbg^"
+Battxt="^c$(color-readability "$BatDbg")^"
+
+# date/time
+Datebg=""
+Datetxt=""
+
+Calbg="^B5^"
+Caltxt="^c$(color-readability "$(status2dconv $Calbg)")^"
+Clockbg="^B8^"
+Clocktxt="^c$(color-readability "$(status2dconv $Clockbg)")^"
+
+# internet
+Intbg="^B1^"
+Inttxt="^c$(color-readability "$(status2dconv $Intbg)")^"
+
+# music
+Musbg="^B2^"
+Musicon="^c$(color-readability "$(status2dconv $Musbg)")^"
+
+MusDbg="$(darkencolor "$(status2dconv $Musbg)")"
+Musbg2="^b$MusDbg^"
+Mustxt="^c$(color-readability "$MusDbg")^"
+
+# recording
+Recbg="^B13^"
+Rectxt="^c$(color-readability "$(status2dconv $Recbg)")^"

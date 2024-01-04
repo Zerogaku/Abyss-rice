@@ -1,0 +1,70 @@
+* {
+  border-radius: 0 !important;
+}
+
+/* I use tree style tabs to see tabs and switch tabs using tridactyl */
+#TabsToolbar {display:none !important}
+
+/* disable some unnecessary UI */
+#forward-button {display:none !important}
+#back-button {display:none !important}
+#scrollbutton-down {display: none !important}
+#scrollbutton-up {display: none !important}
+#alltabs-button {display: none !important}
+#tabs-newtab-button {display: none !important}
+#new-tab-button {display: none !important}
+.tab-close-button {display: none !important}
+.titlebar-buttonbox-container {display: none !important}
+.titlebar-spacer {display: none !important}
+
+/* COLLAPSE NAVBAR */
+/* (keep below snippet uncommented for either "effect" to work) */
+/* #nav-bar { */
+/*   --navbar-margin: -40px; */
+/*   margin-top: var(--navbar-margin); */
+/*   z-index: -100; */
+/*   opacity: 0; */
+/*   transition: opacity 0.2s ease-in !important; */
+/* } */
+
+/* [TRANSITION FOR BOTH EFFECT] (CTRL+L and hovering url with mouse have transition effect)*/
+/* #navigator-toolbox:focus-within > #nav-bar, */
+/* #navigator-toolbox:hover > #nav-bar { */
+/*   margin-top: 0; */
+/*   margin-bottom: var(--navbar-margin); */
+/*   z-index: 100; */
+/*   opacity: 1; */
+/* } */
+
+/* [SEPARATED EFFECTS] */
+/* CTRL+L with no animations so it's snappy*/
+/* #navigator-toolbox:focus-within > #nav-bar { */
+/*   margin-top: 0; */
+/*   margin-bottom: var(--navbar-margin); */
+/*   z-index: 100; */
+/*   opacity: 1; */
+/*   transition:none !important; */
+/* } */
+
+/* Hover with mouse will have transition effect */
+/* #navigator-toolbox:hover > #nav-bar { */
+/*   margin-top: 0; */
+/*   margin-bottom: var(--navbar-margin); */
+/*   z-index: 100; */
+/*   opacity: 1; */
+/* } */
+
+
+/* VISUALLY HIDE FIREFOX VIEW (ACCESSIBLE WITH ALT+t+f) */
+/* :root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs, :root[privatebrowsingmode]:not([firefoxviewhidden]) :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs { */
+/* 	border-inline-start: 0 !important; */
+/* 	padding-inline-start: 0 !important; */
+/* 	margin-inline-start: 0 !important; */
+/* } */
+/* #firefox-view-button { */
+/* 	display: none !important; */
+/* } */
+
+
+/* Hide Header in tree style tabs (only when the sidebar is tree style tabs)*/
+#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action] > #sidebar-header{   display: none; }

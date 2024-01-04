@@ -1,0 +1,54 @@
+/* name		dark	light */
+/* black	0	8 */
+/* red		1	9 */
+/* green	2	10 */
+/* yellow	3	11 */
+/* blue		4	12 */
+/* purple	5	13 */
+/* cyan		6	14 */
+/* white	7	15 */
+dmenu.font          : monospace:size=15
+dmenu.background    : #07090D
+dmenu.foreground    : #F3F5F8
+dmenu.selbackground : #DDE4ED
+dmenu.selforeground : #07090D
+dmenu.bordercolor   : #DDE4ED
+
+dwm.normbgcolor: #07090D
+dwm.selbgcolor: #07090D
+dwm.tagsnormfgcolor: #DDE4ED
+
+dwm.titlenormbgcolor: #07090D
+dwm.titleselbgcolor: #07090D
+
+dwm.selfgcolor: #C3BDA6
+dwm.normfgcolor: #C3BDA6
+dwm.titleselfgcolor: #DDE4ED
+dwm.tagsselfgcolor: #DDE4ED
+dwm.tagsselbgcolor: #07090D
+dwm.tagsnormbgcolor: #07090D
+
+dwm.selbordercolor: #DDE4ED
+dwm.normbordercolor: #07090D
+dwm.normfloatcolor: #07090D
+dwm.selfloatcolor: #DDE4ED
+
+*.color0: #07090D
+*.color1: #EF8A5E
+*.color2: #B7AE99
+*.color3: #BFB9A4
+*.color4: #C3BDA6
+*.color5: #D7D8E5
+*.color6: #DDE4ED
+*.color7: #E5E9ED
+*.color8: #A0A3A5
+*.color9: #EF8A5E
+*.color10: #B7AE99
+*.color11: #BFB9A4
+*.color12: #C3BDA6
+*.color13: #D7D8E5
+*.color14: #DDE4ED
+*.color15: #E5E9ED
+*.background: #07090D
+*.foreground: #F3F5F8
+*.cursorColor: #F3F5F8

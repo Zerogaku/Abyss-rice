@@ -1,0 +1,52 @@
+# Ignore entire home (from current location of ignore file)
+/*
+# Include these folders only
+
+## app configs
+!.config/
+.config/*
+!.config/beets/
+!.config/dunst/
+!.config/fontconfig/
+!.config/lf/
+!.config/mpd/
+!.config/mpv/
+!.config/ncmpcpp/
+!.config/neofetch/
+!.config/newsboat/
+!.config/nvim/
+.config/nvim/*
+!.config/nvim/init.vim
+!.config/nvim/shortcuts.vim
+!.config/picom/
+!.config/pipewire/
+!.config/shell/
+!.config/sxiv/
+!.config/wallust/
+!.config/x11/
+!.config/zathura/
+!.config/zsh/
+!.config/chrome/
+!.config/tridactyl/
+
+## system scripts
+!.local/
+.local/*
+!.local/bin/
+
+## firefox stylesheet
+#!.mozilla/
+#.mozilla/*
+#!.mozilla/firefox/
+#.mozilla/firefox/*
+#!.mozilla/firefox/*.default-release/
+#.mozilla/firefox/*.default-release/*
+#!.mozilla/firefox/*.default-release/chrome/
+
+!.zprofile
+!.xprofile
+!.bash_profile
+!.bashrc
+
+!README.org
+!.gitignore

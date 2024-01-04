@@ -1,0 +1,3 @@
+#!/bin/sh
+prime-run $(dmenu_path | dmenu -i -p "prime-run" "$@")
+#prime-run rofi -display-run "prime-run" -sort -no-lazy-grab -show run -modi drun

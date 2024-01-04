@@ -1,0 +1,27 @@
+# to read on startup use:
+# autocmd Docstart .* source ~/.config/tridactyl/tridactylrc
+# Personal theme
+colorscheme custom
+set editorcmd $TERMINAL -n tridactyl -e nvim
+
+# Sane defaults
+set smoothscroll false
+set modeindicatorshowkeys true
+jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.then(_ => tri.config.set("searchurls", u, null)), Promise.resolve())
+set relatedopenpos next
+bind J tabnext
+bind K tabprev
+
+# Custom search urls
+# youtube
+set searchurls.yt https://www.youtube.com/results?search_query=%s
+# arch linux wiki
+set searchurls.aw https://wiki.archlinux.org/index.php?title=Special%3ASearch&search=%s
+# wikipedia
+set searchurls.wk https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s
+# pinterest
+set searchurls.pt https://www.pinterest.es/search/pins/?q=%s
+# github
+set searchurls.gh https://github.com/search?utf8=✓&q=%s
+# gentoo
+set searchurls.gtw https://wiki.gentoo.org/index.php?title=Special%3ASearch&profile=default&fulltext=Search&search=%s

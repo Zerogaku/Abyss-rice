@@ -1,0 +1,54 @@
+#+begin_src text
+ ▄▄▄·     ▄▄▄▄·      ▄· ▄▌    .▄▄ ·     .▄▄ ·
+▐█ ▀█     ▐█ ▀█▪    ▐█▪██▌    ▐█ ▀.     ▐█ ▀.
+▄█▀▀█     ▐█▀▀█▄    ▐█▌▐█▪    ▄▀▀▀█▄    ▄▀▀▀█▄
+▐█ ▪▐▌    ██▄▪▐█     ▐█▀·.    ▐█▄▪▐█    ▐█▄▪▐█
+ ▀  ▀     ·▀▀▀▀       ▀ •      ▀▀▀▀      ▀▀▀▀
+#+end_src
+
+Pseudo minimal desktop environment (for the doomed nvidia users).
+
+* Features
+- Dynamic colorsheme based on current wallpaper (with random wallpaper selected on startup)
+- Nearly all the features of luke smith's voidrice (voidrice but /slightly/ improved, see _tweaks_ section for list of differences)
+- Minimal tiling window manager
+  - dwm (built with flexipatch)
+  - dwmblocks-async
+    - interactable modules
+    - will still be responsive if one modules fails
+  - dmenu (built with flexipatch)
+    - centered
+    - integrated with most of the included scripts
+  - flarity (patched st with text reflow)
+- nvidia prime integration (dmenu script)
+- beats for music database (not really a feature, just some configurations)
+- emacs (along with nvim, *incredibly sacriligious* D:)
+- compositing with picom
+  - no screen tearing
+  - optional blurring depending if gpu supports glx backend
+- bluetooth support
+  - keybinding to open bluetoothctl
+- Firefox with tridactyl integration
+- Aesthetics~
+
+See [[https:https://github.com/Zerogaku/CARBS][CARBS]] for install script and list of installed programs.
+
+* Disclaimer / reasoning
+I made this configuration with the intention of replicating [[https:https://github.com/LukeSmithxyz/voidrice][Luke smith's voidrice]] while improving on aesthetics and adding some enhancements, but as this still lacks polishing the dots and install script are mostly here for my own convenience, I also use this setup on 2 of my laptops that both have hybrid graphics (integrated intel gpu with discrete nvidia gpu), so the setup is more /opinionated/ than luke smith's voidrice.
+
+I use emacs as my IDE, and use nvim for the editing of dotfiles. Nvim is certainly faster but currently it has no good option for org mode, and for that reason I choose to keep it as a secondary option.
+
+Programs are autostarted in .config/x11/xprofile ( some programs may start earlier than the itself )
+* TODO For consideration [16%]
+- [ ] Provide a unique default colorscheme
+- [ ] possible dmenu replacement (optional)
+  - [ ] Rofi? for window search functionality (a bit bloated, need more convincing)
+  - [ ] use fzf as an even more minimal alternative (might lose/break functionality in current setup)
+- [ ] st with tmux as fix for text reflow
+  - flarity is a bit hard to patch lol but is one of the only st builds with a good reflow patch
+  - currently luke smith's st has the ability to copy the output of the last command with /external pipe/ patch
+  - might build another flexipatch configuration (st-flexipatch has the sixel patch)
+- [ ] wacom tablet bindings
+- [X] +syncthing integration+ nevermind we got ssh and rsync instead
+- [ ] some of the enabled patches in dwm-flexipatch have not been binded (ex: cfacts)
+- [ ] include screenshots

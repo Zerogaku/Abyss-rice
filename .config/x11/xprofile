@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# This file runs when a DM logs you into a graphical session.
+# If you use startx/xinit like a Chad, this file will also be sourced.
+
+#xrandr --dpi 120		# Set DPI. User may want to use a larger number for larger screens.
+#xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+#bluetoothctl -- power off 	# save battery by turning bluetooth off
+#autostart="mpd dunst unclutter pipewire remapd picom"
+#
+#for program in $autostart; do
+#	pidof -sx "$program" || "$program" &
+#done >/dev/null 2>&1
+#
+## Ensure that xrdb has finished running before moving on to start the WM/DE.
+#[ -n "$xrdbpid" ] && wait "$xrdbpid"
+#
+##setres		# set resolution to low dpi
+#setbg ~/Images/Wallpapers 	# set the background with the `setbg` script
+#dwmblocks &
+#emacsinit &
+
+# experiment autostart
+sleep 2 && {
+	xrandr --dpi 120 &
+	xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
+	[ -n "$xrdbpid" ] && wait "$xrdbpid"
+	#bluetoothctl -- power off
+	mpd &
+	dunst &
+	unclutter &
+	pipewire &
+	remapd &
+	picom &
+	setres
+	setbg ~/Images/Wallpapers &
+	dwmblocks &
+	emacsinit &
+}

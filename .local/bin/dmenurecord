@@ -1,0 +1,143 @@
+#!/bin/sh
+
+# Usage:
+# `$0`: Ask for recording type via dmenu
+# `$0 screencast`: Record both audio and screen
+# `$0 video`: Record only screen
+# `$0 audio`: Record only audio
+# `$0 kill`: Kill existing recording
+# `$0 screencastda`: screencast with desktop audio
+#
+# If there is already a running instance, user will be prompted to end it.
+. ~/.local/bin/statusbar/ext/sb-colors
+
+OUTDIR="$HOME/Videos"
+
+getdim() { xrandr | sed -n "s/\s*\([0-9]\+x[0-9]\+\).*\*.*/\1/p" ;}
+
+updateicon() { \
+	echo "$1" > /tmp/recordingicon
+	pkill -RTMIN+1 "${STATUSBAR:-dwmblocks}"
+	}
+
+killrecording() {
+	recpid="$(cat /tmp/recordingpid)"
+	kill -15 "$recpid"
+	rm -f /tmp/recordingpid
+	updateicon ""
+	pkill -RTMIN+1 "${STATUSBAR:-dwmblocks}"
+	}
+
+screencast() { \
+	ffmpeg -y \
+	-f x11grab \
+	-framerate 30 \
+	-s "$(getdim)" \
+	-i "$DISPLAY" \
+	-r 24 \
+	-use_wallclock_as_timestamps 1 \
+	-f pulse -thread_queue_size 1024 -i default \
+ 	-c:v h264 \
+	-crf 0 -preset ultrafast -c:a aac \
+	-af "highpass=f=200,lowpass=f=3000,afftdn=nf=-25:tn=1" \
+	"$OUTDIR/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt} 󰻂  / REC"
+       	}
+
+video() { ffmpeg \
+	-f x11grab \
+	-framerate 30 \
+	-s "$(getdim)" \
+	-i "$DISPLAY" \
+ 	-c:v libx264 -qp 0 -r 30 \
+	"$OUTDIR/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt}   / REC"
+	}
+
+webcamhidef() { ffmpeg \
+	-f v4l2 \
+	-i /dev/video0 \
+	-video_size 1920x1080 \
+	"$OUTDIR/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt} 󰈈  / REC"
+	}
+
+webcam() { ffmpeg \
+	-f v4l2 \
+	-i /dev/video0 \
+	-video_size 640x480 \
+	"$OUTDIR/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt}   / REC"
+	}
+
+audio() { \
+	ffmpeg \
+	-f pulse -i default \
+	-c:a flac \
+	-af "highpass=f=200,lowpass=f=3000,afftdn=nf=-25:tn=1" \
+	"$OUTDIR/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt}  / REC"
+	}
+
+screencastda() {
+	ffmpeg \
+	-f pulse -ac 2 -ar 48000 -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor \
+	-f pulse -ac 1 -ar 48000 -i alsa_input.usb-AKM_AK5370-00-AK5370.analog-mono \
+	-filter_complex amix=inputs=2 \
+	-f x11grab -r 30 -s 1920x1080 -i :0.0+0,0 \
+	-vcodec libx264 -preset veryfast -crf 18 \
+	-acodec libmp3lame -ar 44100 -q:a 1 \
+	-pix_fmt yuv420p \
+	"$OUTDIR/screencast-da-$(date '+%y%m%d-%H%M-%S').mp4" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt}   / REC"
+}
+
+askrecording() { \
+	choice=$(printf "screencast\\nscreencast (desktop audio)\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
+	case "$choice" in
+		screencast) screencast;;
+		"screencast (desktop audio)") screencastda;;
+		audio) audio;;
+		video) video;;
+		*selected) videoselected;;
+		webcam) webcam;;
+		"webcam (hi-def)") webcamhidef;;
+	esac
+	}
+
+asktoend() { \
+	response=$(printf "No\\nYes" | dmenu -i -p "Recording still active. End recording?") &&
+	[ "$response" = "Yes" ] &&  killrecording
+	}
+
+videoselected()
+{
+	slop -f "%x %y %w %h" > /tmp/slop
+	read -r X Y W H < /tmp/slop
+	rm /tmp/slop
+
+	ffmpeg \
+	-f x11grab \
+	-framerate 30 \
+	-video_size "$W"x"$H" \
+	-i :0.0+"$X,$Y" \
+	-c:v libx264 -qp 0 -r 30 \
+	"$OUTDIR/box-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! > /tmp/recordingpid
+	updateicon "${Recbg}${Rectxt}   / REC"
+}
+
+case "$1" in
+	screencast) screencast;;
+	audio) audio;;
+	video) video;;
+	*selected) videoselected;;
+	kill) killrecording;;
+	*) ([ -f /tmp/recordingpid ] && asktoend && exit) || askrecording;;
+esac

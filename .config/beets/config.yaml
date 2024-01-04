@@ -1,0 +1,10 @@
+directory: ~/Music
+library: ~/Music/library.db
+
+import:
+  move: yes
+
+plugins: fromfilename edit scrub
+
+scrub:
+  auto: no
