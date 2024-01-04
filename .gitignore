@@ -28,6 +28,7 @@
 !.config/zsh/
 !.config/chrome/
 !.config/tridactyl/
+!.config/kritashortcutsrc
 
 ## system scripts
 !.local/
