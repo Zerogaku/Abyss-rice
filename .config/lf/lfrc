@@ -141,7 +141,9 @@ map I :rename; cmd-home # at the very beginning
 map i :rename # before extension
 map a :rename; cmd-right # after extension
 map B bulkrename
-map b $setbg $f
+# use &setbg over $setbg so setgif doesn't quit when lf quits,
+# though can be fixed using super+q on lf terminal instead.
+map b &setbg $f
 
 map <c-e> down
 map <c-y> up

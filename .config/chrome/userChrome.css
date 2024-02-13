@@ -3,13 +3,13 @@
 }
 
 /* I use tree style tabs to see tabs and switch tabs using tridactyl */
-#TabsToolbar {display:none !important}
+/* #TabsToolbar {display:none !important} */
 
 /* disable some unnecessary UI */
 #forward-button {display:none !important}
 #back-button {display:none !important}
-#scrollbutton-down {display: none !important}
-#scrollbutton-up {display: none !important}
+/* #scrollbutton-down {display: none !important} */
+/* #scrollbutton-up {display: none !important} */
 #alltabs-button {display: none !important}
 #tabs-newtab-button {display: none !important}
 #new-tab-button {display: none !important}
@@ -56,15 +56,41 @@
 
 
 /* VISUALLY HIDE FIREFOX VIEW (ACCESSIBLE WITH ALT+t+f) */
-/* :root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs, :root[privatebrowsingmode]:not([firefoxviewhidden]) :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs { */
-/* 	border-inline-start: 0 !important; */
-/* 	padding-inline-start: 0 !important; */
-/* 	margin-inline-start: 0 !important; */
-/* } */
-/* #firefox-view-button { */
-/* 	display: none !important; */
-/* } */
+:root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs, :root[privatebrowsingmode]:not([firefoxviewhidden]) :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs {
+	border-inline-start: 0 !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
+}
+#firefox-view-button {
+	display: none !important;
+}
 
 
 /* Hide Header in tree style tabs (only when the sidebar is tree style tabs)*/
-#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action] > #sidebar-header{   display: none; }
+/* #sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action] > #sidebar-header{   display: none; } */
+
+/* disable green indicator for pinned tabs mostly here for reference*/
+/* .tabbrowser-tab > .tab-stack > */
+/*  .tab-content[pinned][titlechanged]:not([selected="true"]){ */
+/*   background-image: none !important; */
+/*   /1* blue bottom border at 40% opacity *1/ */
+/*   /1* border-bottom: 2px solid rgba(0, 0, 255, 0.4) !important; *1/ */
+/* } */
+
+
+/* dynamic native tabbar with sidebery */
+#main-window #TabsToolbar{
+  overflow: hidden;
+}
+/* Default state: Set initial height to enable animation */
+#main-window #TabsToolbar { display:flex !important; }
+#main-window[uidensity="touch"] #TabsToolbar { display:flex !important; }
+#main-window[uidensity="compact"] #TabsToolbar { display:flex !important; }
+/* Hidden state: Hide native tabs strip */
+#main-window[titlepreface*="XXX"] #TabsToolbar { display: none !important; }
+/* Hidden state: Fix z-index of active pinned tabs */
+#main-window[titlepreface*="XXX"] #tabbrowser-tabs { z-index: 0 !important; }
+
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
+  display: none;
+}

@@ -4,11 +4,11 @@
 
 # VOLUME - style 2
 Volicon="^B6^^c#000000^"
-Volinfo="^b#A5ABB1^^c#000000^"
+Volinfo="^b#87896F^^c#000000^"
 
 # BATTERY - style 2
 Baticon="^B9^^c#000000^" #combine them both
-Batinfo="^b#B36746^^c#FFFFFF^"
+Batinfo="^b#8471A8^^c#FFFFFF^"
 
 # DATE/TIME - style 1 (for both)
 Calmod="^B5^^c#000000^"
@@ -16,11 +16,11 @@ Calmod="^B5^^c#000000^"
 Timemod="^B8^^c#000000^"
 
 # internet - style 1
-Intmod="^B1^^c#000000^"
+Intmod="^B1^^c#FFFFFF^"
 
 # music - style 2
-Musicon="^B2^^c#000000^"
-Musinfo="^b#898272^^c#000000^"
+Musicon="^B2^^c#FFFFFF^"
+Musinfo="^b#694F8D^^c#FFFFFF^"
 
 # recording - style 1
 Recmod="^B13^^c#000000^"

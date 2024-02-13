@@ -4,8 +4,14 @@ KisAssistantTool='
 KisToolSelectOutline=S
 KritaShape/KisToolLazyBrush=F8
 KritaShape/KisToolLine=|
+ToolReferenceImages=Alt+1
 add_new_colorize_mask=F7
 add_new_group_layer=Ctrl+Ins
+hmirror_action=Alt+4
 rotate_canvas_left=Ctrl+[;\s
+toggle_assistant=Alt+3
 toggle_layer_visibility==
+view_ruler=Alt+F1
 view_toggle_painting_assistants="
+view_toggle_reference_images=Alt+2
+vmirror_action=Alt+5

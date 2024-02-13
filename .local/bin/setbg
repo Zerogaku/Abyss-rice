@@ -20,12 +20,36 @@ case "$(file --mime-type -b "$trueloc")" in
 	*) notify-send "🖼️ Error" "Not a valid image or directory." ; exit 1;;
 esac
 
-if command -v wallust >/dev/null 2>&1 ; then
-	xwallpaper --daemon --zoom "$bgloc"
-	wallust "$(readlink -f $bgloc)" && xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
-	autotextcolor && kill -10 $(pidof dwmblocks)
-	pkill dunst; setsid -f dunst
+#if command -v wallust >/dev/null 2>&1 ; then
+#    if [[ "$(file -b --mime-type "$trueloc")" == "image/gif" ]]; then
+#	kill $(ps aux | grep -i '[s]etgif' | awk '{print $2}')
+#        setgif auto "$trueloc" &
+#        wallust "$(readlink -f $bgloc)" && xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
+#        autotextcolor && kill -10 $(pidof dwmblocks)
+#        pkill dunst; setsid -f dunst
+#    else
+#	kill $(ps aux | grep -i '[s]etgif' | awk '{print $2}')
+#        xwallpaper --daemon --zoom "$bgloc"
+#        wallust "$(readlink -f $bgloc)" && xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
+#        autotextcolor && kill -10 $(pidof dwmblocks)
+#        pkill dunst; setsid -f dunst
+#    fi
+#else
+#	xwallpaper --daemon --zoom "$bgloc"
+#fi
+if command -v wallust >/dev/null 2>&1; then
+    if [[ "$(file -b --mime-type "$trueloc")" == "image/gif" ]]; then
+        pkill -f '[s]etgif'
+        setgif auto "$trueloc" &
+    else
+        pkill -f '[s]etgif'
+        xwallpaper --zoom "$bgloc"
+    fi
+    wallust "$(readlink -f "$bgloc")" && xrdb "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
 fi
+
+autotextcolor && pkill -SIGUSR1 dwmblocks
+pkill dunst && setsid -f dunst
 
 # If running dwm, hit the key to refresh the color scheme.
 pidof dwm >/dev/null && xdotool key super+F5

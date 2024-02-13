@@ -40,7 +40,7 @@ for battery in /sys/class/power_supply/BAT?*; do
 		Discharging)
 		    if [ "$capacity" -le 20 ]; then
 			status=" $status"
-			#notify-send "🪫Battery very low, please charge"
+			notify-send "🪫Battery very low, please charge"
 		    fi
 		    ;;
 		Charging) status=" " ;;
