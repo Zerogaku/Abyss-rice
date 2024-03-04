@@ -3,6 +3,8 @@
 # Displays number of unread news items and an loading icon if updating.
 # When clicked, brings up `newsboat`.
 
+. ~/.local/bin/statusbar/ext/sb-colors
+
 case $BUTTON in
         1) setsid "$TERMINAL" -e newsboat ;;
 	2) setsid -f newsup >/dev/null exit ;;
@@ -14,4 +16,6 @@ case $BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-cat /tmp/newsupdate 2>/dev/null || echo "$(newsboat -x print-unread | awk '{ if($1>0) print "^b#FFDE85^^c#000000^   ^b#F8CA49^^c#000000^ " $1}')$(cat "${XDG_CONFIG_HOME:-$HOME/.config}"/newsboat/.update 2>/dev/null)"
+# cat /tmp/newsupdate 2>/dev/null || echo "$(newsboat -x print-unread | awk '{ if($1>0) print "^b#FFDE85^^c#000000^   ^b#F8CA49^^c#000000^ " $1}')$(cat "${XDG_CONFIG_HOME:-$HOME/.config}"/newsboat/.update 2>/dev/null)"
+
+cat /tmp/newsupdate 2>/dev/null || printf "%s   %s %d\n" "$Newicon" "$Newinfo" "$(newsboat -x print-unread)"

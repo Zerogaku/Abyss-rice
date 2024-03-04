@@ -94,7 +94,8 @@ cmd copyto ${{
 	notify-send "📋 File(s) copied." "File(s) copies to $dest."
 }}
 
-cmd setbg "$1"
+# cmd setbg "$1"
+# cmd firefox "$1"
 
 cmd bulkrename ${{
     tmpfile_old="$(mktemp)"
@@ -144,6 +145,7 @@ map B bulkrename
 # use &setbg over $setbg so setgif doesn't quit when lf quits,
 # though can be fixed using super+q on lf terminal instead.
 map b &setbg $f
+map S $$BROWSER $fx
 
 map <c-e> down
 map <c-y> up

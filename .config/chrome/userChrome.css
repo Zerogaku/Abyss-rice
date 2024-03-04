@@ -87,9 +87,9 @@
 #main-window[uidensity="touch"] #TabsToolbar { display:flex !important; }
 #main-window[uidensity="compact"] #TabsToolbar { display:flex !important; }
 /* Hidden state: Hide native tabs strip */
-#main-window[titlepreface*="XXX"] #TabsToolbar { display: none !important; }
+#main-window[titlepreface*="​"] #TabsToolbar { display: none !important; }
 /* Hidden state: Fix z-index of active pinned tabs */
-#main-window[titlepreface*="XXX"] #tabbrowser-tabs { z-index: 0 !important; }
+#main-window[titlepreface*="​"] #tabbrowser-tabs { z-index: 0 !important; }
 
 #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
   display: none;

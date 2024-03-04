@@ -37,6 +37,12 @@ esac
 #else
 #	xwallpaper --daemon --zoom "$bgloc"
 #fi
+
+# if black screen appears on startup because of the gif wallpaper,
+# it's likely that the script hasn't cached the images,
+# simply run setbg on the script once normally.
+# possible fix is to add a delay, so it does the cache process on startup
+
 if command -v wallust >/dev/null 2>&1; then
     if [[ "$(file -b --mime-type "$trueloc")" == "image/gif" ]]; then
         pkill -f '[s]etgif'

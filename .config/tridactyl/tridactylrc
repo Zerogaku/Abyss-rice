@@ -1,5 +1,9 @@
 # to read on startup use:
-# autocmd Docstart .* source ~/.config/tridactyl/tridactylrc
+# autocmd DocStart .* source ~/.config/tridactyl/tridactylrc
+# if on windows use:
+# autocmd DocStart .* source C:\User\Null\Appdata\Roaming\tridactyl\tridactyrc
+# NOTE: on windows place themes folder in directory containing the tridactylrc
+
 # Personal theme
 colorscheme custom
 set editorcmd $TERMINAL -n tridactyl -e nvim
@@ -27,3 +31,7 @@ set searchurls.gh https://github.com/search?utf8=✓&q=%s
 set searchurls.gtw https://wiki.gentoo.org/index.php?title=Special%3ASearch&profile=default&fulltext=Search&search=%s
 
 bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
+
+# global marks for quick tab switching
+bind <A-\> gobble 1 markaddglobal
+bind \ gobble 1 markjumpglobal

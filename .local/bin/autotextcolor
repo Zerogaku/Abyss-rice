@@ -2,7 +2,7 @@
 
 # Modules
 # note:
-# Dbg is just used for convennience here, just focus on bg and bg2.
+# Dbg is just used for convenience here, just focus on bg and bg2.
 # style 1 will use only letters, whilst style 2 will use numbered letters
 
 ## VOLUME
@@ -57,6 +57,22 @@ Recbg="^B13^"
 Rectxt="^c$(color-readability "$(status2dconv $Recbg)")^"
 Recmod="${Recbg}${Rectxt}"
 
+## NEWS
+Newbg="^B3^"
+Newchar="^c$(color-readability "$(status2dconv $Newbg)")^"
+Newicon="${Newbg}${Newchar}"
+
+NewDbg="$(darkencolor "$(status2dconv $Newbg)")"
+
+Newbg2="^b$NewDbg^"
+Newtxt="^c$(color-readability "$NewDbg")^"
+Newinfo="${Newbg2}${Newtxt}"
+
+## KEYBOARD LAYOUT
+Keybg="^B15^"
+Keytxt="^c$(color-readability "$(status2dconv $Keybg)")^"
+Keymod="${Keybg}${Keytxt}"
+
 # Read the template file
 template_file="/home/zero/.local/bin/statusbar/ext/template"
 template=$(<"$template_file")
@@ -75,6 +91,11 @@ output="${output//\{B2\}/$Batinfo}"
 
 output="${output//\{M1\}/$Musicon}"
 output="${output//\{M2\}/$Musinfo}"
+
+output="${output//\{N1\}/$Newicon}"
+output="${output//\{N2\}/$Newinfo}"
+
+output="${output//\{K\}/$Keymod}"
 
 # Write the output to a file
 output_file="/home/zero/.local/bin/statusbar/ext/sb-colors"

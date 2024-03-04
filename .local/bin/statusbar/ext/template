@@ -24,3 +24,10 @@ Musinfo="{M2}"
 
 # recording - style 1
 Recmod="{R}"
+
+# news - style 2
+Newicon="{N1}"
+Newinfo="{N2}"
+
+# keyboard - style 1
+Keymod="{K}"

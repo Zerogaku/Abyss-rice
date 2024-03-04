@@ -19,6 +19,10 @@
 #setbg ~/Images/Wallpapers 	# set the background with the `setbg` script
 #dwmblocks &
 #emacsinit &
+# to stop screen from turning off when inactive try the below commands:
+# xset s off
+# xset s noblank
+# xset -dpms
 
 # experiment autostart
 sleep 2 && {
@@ -33,7 +37,8 @@ sleep 2 && {
 	remapd &
 	picom &
 	setres
-	setbg ~/Images/Wallpapers &
+	setbg ~/Images/Wallpapers
 	dwmblocks &
 	emacsinit &
+	xset s off -dpms &
 }

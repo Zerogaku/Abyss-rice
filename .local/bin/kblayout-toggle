@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check if the "variant" line is present in the output of setxkbmap -query
+if setxkbmap -query | grep -q 'variant:'; then
+	# Variant detected, switch to regular US layout
+	setxkbmap -layout us
+	kill -37 $(pidof dwmblocks)
+	notify-send "Switched to regular US layout"
+else
+	# No variant detected, switch to international US layout
+	setxkbmap -layout us -variant intl
+	kill -37 $(pidof dwmblocks)
+	notify-send "Switched to international US layout"
+fi
