@@ -26,9 +26,9 @@
 !.config/x11/
 !.config/zathura/
 !.config/zsh/
-!.config/chrome/
-!.config/tridactyl/
 !.config/kritashortcutsrc
+!.config/gallery-dl/
+.config/gallery-dl/*
 
 ## system scripts
 !.local/
